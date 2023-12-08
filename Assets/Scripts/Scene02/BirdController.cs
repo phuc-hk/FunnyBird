@@ -22,6 +22,5 @@ public class BirdController : MonoBehaviour
    {
         rb.velocity = new Vector2(0, gamePanel.speed);
    }
-
    
 }
