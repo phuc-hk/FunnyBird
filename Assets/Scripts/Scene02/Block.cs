@@ -14,7 +14,7 @@ public class Block : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         var blockPosition = transform.position;
         transform.position = new Vector2(transform.position.x, Random.Range(-3, 6));
-        upBlock.transform.position = new Vector2(upBlock.transform.position.x, Random.Range(8, 12));
+        upBlock.transform.position = new Vector2(upBlock.transform.position.x, Random.Range(8, 10));
         downBlock.transform.position = new Vector2(downBlock.transform.position.x, Random.Range(-4, -8));
     }
 
