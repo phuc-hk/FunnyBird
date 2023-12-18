@@ -9,8 +9,8 @@ public class GameController : MonoBehaviour
     public float maxX;
     public float y;
     public bool playing;
-    public TextMeshProUGUI score;
-    private float point;
+    //public TextMeshProUGUI score;
+    //private float point;
     private float beginTime = 2;
     private float currentTime;
 
@@ -18,7 +18,7 @@ public class GameController : MonoBehaviour
     void Start()
     {
         playing = false;
-        score.text = point.ToString();
+        //score.text = point.ToString();
         currentTime = beginTime;
     }
 
@@ -29,7 +29,7 @@ public class GameController : MonoBehaviour
         {
             playing = true;
             InvokeRepeating(nameof(SpawnBlock), 0.5f, 3f);
-            InvokeRepeating(nameof(InscreasePoint), 0.5f, 3f);
+            //InvokeRepeating(nameof(InscreasePoint), 0.5f, 3f);
         }
 
         //currentTime -= Time.deltaTime;
@@ -41,17 +41,17 @@ public class GameController : MonoBehaviour
 
     }
 
-    private void InscreasePoint()
-    {
-        point += 1;
-        score.text = point.ToString();
-    }
+    //private void InscreasePoint()
+    //{
+    //    point += 1;
+    //    score.text = point.ToString();
+    //}
 
     private void SpawnBlock()
     {
         var positionX = Random.Range(-maxX, maxX);
         Vector3 position = new Vector3(positionX, y, 0);
         var oneBlock = Instantiate(block, position, Quaternion.identity);
-        Destroy(oneBlock, 2f);
+        //Destroy(oneBlock, 2f);
     }
 }
