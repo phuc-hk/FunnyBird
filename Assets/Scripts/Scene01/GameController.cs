@@ -25,9 +25,9 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.touchCount > 0 && !playing)
+        if (playing)
         {
-            playing = true;
+            playing = false;
             InvokeRepeating(nameof(SpawnBlock), 0.5f, 3f);
             //InvokeRepeating(nameof(InscreasePoint), 0.5f, 3f);
         }

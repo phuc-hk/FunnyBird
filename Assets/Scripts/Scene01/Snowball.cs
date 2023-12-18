@@ -28,6 +28,7 @@ public class Snowball : MonoBehaviour
     IEnumerator ReLoadScene()
     {
         yield return new WaitForSeconds(0.3f);
-        SceneManager.LoadScene("Scene01");
+        //SceneManager.LoadScene("Scene01");
+        UIManager.Instance.ShowEndPanel();
     }
 }
