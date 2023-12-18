@@ -7,9 +7,12 @@ public class GroundDetect : MonoBehaviour
 {
     public TextMeshProUGUI score;
     public float point = 0;
+    AudioSource audioSource;
+    [SerializeField] AudioClip santaLaugh;
     void Start()
     {
         score.text = point.ToString();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -18,6 +21,10 @@ public class GroundDetect : MonoBehaviour
         if (collision.gameObject.CompareTag("Block"))
         {
             InscreasePoint();
+            //if (!audioSource.isPlaying)
+            //{
+            audioSource.PlayOneShot(santaLaugh);
+            //}
         }    
     }
 
