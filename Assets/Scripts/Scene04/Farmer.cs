@@ -16,7 +16,14 @@ public class Farmer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (joystick.joystickVec != Vector2.zero)
+        {
+            // Calculate the angle in degrees
+            float angle = Mathf.Atan2(joystick.joystickVec.y, joystick.joystickVec.x) * Mathf.Rad2Deg;
+            // Set the rotation of the player
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        }
+
     }
 
     private void FixedUpdate()
