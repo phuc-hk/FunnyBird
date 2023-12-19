@@ -17,7 +17,7 @@ public class GamePanel : MonoBehaviour
     }
     public void OnPointerDown()
     {
-        speed = 10;
+        speed = 5;
     }
 
     public void OnPointerUp()

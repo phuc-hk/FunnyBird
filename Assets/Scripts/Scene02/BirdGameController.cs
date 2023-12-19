@@ -5,6 +5,7 @@ using UnityEngine;
 public class BirdGameController : MonoBehaviour
 {
     public GameObject blockPrefab;
+    
     //private bool startGame;
     // Start is called before the first frame update
     void Start()

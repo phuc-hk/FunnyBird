@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class UIManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject startPanel;
     [SerializeField] GameObject endPanel;
     [SerializeField] TextMeshProUGUI score;
+    //[SerializeField] ScoreManager ScoreManager;
+    public UnityEvent OnRestart;
 
     public static UIManager Instance;
 
@@ -23,12 +26,15 @@ public class UIManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        Time.timeScale = 0;
     }
 
     public void StartGame()
     {
-        gameController.playing = true;
-        startPanel.gameObject.SetActive(false);
+        if (gameController!=null)
+            gameController.playing = true;
+        startPanel.SetActive(false);
+        Time.timeScale = 1;
     }
 
     public void ExitGame()
@@ -42,9 +48,25 @@ public class UIManager : MonoBehaviour
         score.text = scoreManager.point.ToString();
     }
 
-    public void RestartGame()
+    public void EndPanel()
     {
+        Time.timeScale = 0;
+        endPanel.SetActive(true);
+        score.text = ScoreManager.Instance.point.ToString();
+        //ScoreManager.Instance.IncreaseScore();
+    }
+
+    public void RestartGame()
+    { 
         scoreManager.SetPoint(0);
         endPanel.SetActive(false);
+    }
+
+    public void Restart()
+    {
+        Time.timeScale = 1;
+        ScoreManager.Instance.ResetScore();
+        endPanel.SetActive(false);
+        OnRestart?.Invoke();
     }
 }
