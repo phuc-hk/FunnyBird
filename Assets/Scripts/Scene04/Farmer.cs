@@ -6,6 +6,8 @@ public class Farmer : MonoBehaviour
 {
     public Joystick joystick;
     public float speed;
+    public GameObject bulletPrefab;
+    public Transform firingPos;
     private Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
@@ -36,5 +38,12 @@ public class Farmer : MonoBehaviour
         {
             rb.velocity = Vector2.zero;
         }
+    }
+
+    public void FireBullet()
+    {
+        // Instantiate the bullet
+        Instantiate(bulletPrefab, firingPos.position, transform.rotation);
+        //Debug.Log("Firing");
     }
 }
